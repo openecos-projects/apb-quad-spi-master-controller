@@ -1,0 +1,18 @@
+uid: ip-000021
+upstream_repository: local-ref/apb_spi_master
+upstream_owner: openecos-projects
+upstream_author: ETH Zurich, University of Bologna, and Nuclei System Technology
+upstream_ref: ref/apb_spi_master
+upstream_ref_type: local-reference
+upstream_commit: null
+local_source_snapshot: 2026-06-15
+local_source_project: local ip-catalog reference directory
+silicon_validated: false
+mirrored_at: 2026-06-15
+mirror_policy: source-mirror
+sync_policy: none
+notes:
+  - This file records source provenance for catalog review.
+  - Current local RTL is copied from ref/apb_spi_master.
+  - The reference source contains Solderpad Hardware License 0.51 notices.
+  - Do not run automated upstream synchronization from this repository.

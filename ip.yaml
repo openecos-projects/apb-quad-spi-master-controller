@@ -1,0 +1,153 @@
+uid: ip-000021
+repo_name: apb-quad-spi-master-controller
+slug: apb-quad-spi-master-controller
+display_name: APB Quad SPI Master Controller
+summary: APB-based SPI/QSPI master controller with command, address, dummy-cycle and data phase control, programmable clock divider, TX/RX FIFOs, four chip-select outputs, and interrupt event generation.
+summary_zh: 基于 APB 总线的 SPI/QSPI 主控制器，支持命令、地址、dummy 周期和数据阶段控制，可编程时钟分频，独立收发 FIFO，最多 4 路片选输出以及基于 FIFO 阈值的中断事件输出；当前代码来自 ref/apb_spi_master 本地参考快照。
+category: peripheral
+subcategories:
+  - spi
+  - qspi
+  - serial
+ip_family: spi
+implementation_style: standard-compatible
+compatibility:
+  - amba-apb
+  - spi
+  - quad-spi
+features:
+  - spi-master
+  - quad-spi-read-write
+  - programmable-clock-divider
+  - command-address-dummy-data-phases
+  - tx-rx-fifo
+  - four-chip-selects
+  - fifo-threshold-interrupt-event
+
+integration_profile:
+  - memory-mapped-peripheral
+  - apb-slave
+resource_profile: small
+performance_profile: register-programmable
+best_for:
+  - qspi-flash-controller
+  - small-mcu
+  - fpga-demo
+  - education
+not_recommended_for:
+  - production-asic-without-license-review
+
+catalog:
+  repository: git@github.com:openecos-projects/ip-catalog.git
+  path: data/ip/peripheral/ip-000021.yaml
+
+links:
+  catalog_repository: https://github.com/openecos-projects/apb-quad-spi-master-controller
+  repository: https://github.com/openecos-projects/apb-quad-spi-master-controller
+  homepage: https://github.com/openecos-projects/apb-quad-spi-master-controller
+  documentation: https://github.com/openecos-projects/apb-quad-spi-master-controller/blob/main/docs/datasheet.md
+
+upstream:
+  owner: openecos-projects
+  repository: local-ref/apb_spi_master
+  author: ETH Zurich, University of Bologna, and Nuclei System Technology
+  contributors: []
+  status: reference-snapshot
+  default_branch: null
+  ref: ref/apb_spi_master
+  ref_type: local-reference
+  commit: null
+  sync_policy: none
+
+tracking:
+  current_ref: ref-apb-spi-master-20260615
+  current_ref_type: source-snapshot
+  baseline_ref: ref/apb_spi_master
+  baseline_reviewed_at: 2026-06-15
+  update_policy: manual
+  provenance:
+    source_project: local ip-catalog reference directory
+    source_snapshot: 2026-06-15
+    silicon_validated: false
+    original_notice: Copyright 2017 ETH Zurich and University of Bologna; modifications for hbirdv2 SoC copyright 2020 Nuclei System Technology, Inc.
+
+versions:
+  - version: 1.0.0
+    ref: ref-apb-spi-master-20260615
+    date: 2026-06-15
+    status: source-snapshot
+    notes: Initial child repository package copied from ref/apb_spi_master.
+
+technical:
+  languages:
+    - Verilog
+  interfaces:
+    - apb
+    - spi
+    - qspi
+    - interrupt
+  bus_compatibility:
+    - apb
+  dependencies:
+    - none
+  top_modules:
+    - apb_spi_master
+  clock_domains: single APB/system clock plus generated SPI clock output
+  reset_scheme: active-low asynchronous reset
+  parameterizable: limited
+  target_process: generic
+  fpga_support: unknown
+  asic_support: unknown
+  toolchains: []
+  deliverables:
+    rtl: present
+    testbench: absent
+    driver: absent
+    docs: basic
+    constraints: absent
+
+legal:
+  license: SHL-0.51
+  license_file_present: false
+  license_risk: medium
+  patent_grant: unknown
+  commercial_use_allowed: unknown
+  notes:
+    - RTL headers identify the Solderpad Hardware License, Version 0.51.
+    - A repository-level LICENSE file is not present in this child package yet.
+    - Complete per-file and upstream provenance review is recommended before final catalog approval.
+
+quality:
+  maturity: candidate
+  verification: not-run-locally
+  documentation_quality: basic
+  integration_difficulty: medium
+  silicon_proven: false
+  fpga_proven: unknown
+  notes:
+    - RTL is present under rtl/.
+    - No local passing simulation, lint, synthesis, coverage, driver, or integration report artifact has been added yet.
+    - Register behavior was extracted from rtl/spi_master_apb_if.v.
+
+internal:
+  status: candidate
+  next_action: Add a repository-level LICENSE file, attach upstream provenance, run lint and simulation, and add software programming examples.
+  source_mirror: true
+  mirror_policy: source-mirror
+  silicon_proven: false
+  source_project: ref/apb_spi_master
+  review_notes: reports/review-summary.md
+  integration_notes:
+    - APB address decode uses PADDR[5:2].
+    - REG_TXFIFO at 0x18 is write-only and REG_RXFIFO at 0x20 is read-only; offset 0x1C is unused by this implementation.
+  used_versions:
+    - 1.0.0
+  used_in_projects: []
+  rejection_reason: null
+
+metadata:
+  first_seen_at: 2026-06-15
+  last_reviewed_at: 2026-06-15
+  data_quality: partial
+  maintainers:
+    - openecos-projects
